@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Permutasi dan Kombinasi</title>
+
+<link rel="icon" type="image" href="c:\Users\User\Downloads\tif1.png">
+
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background: linear-gradient(135deg, #a2c2e6 0%, #c3aed6 50%, #f7cdd0 100%);
+    background-attachment: fixed;
+  }
+
+  header {
+    font-family: "Montserrat", sans-serif;
+    background: linear-gradient(90deg, #5c6bc0, #7e57c2);
+    color: white;
+    text-align: center;
+    padding: 25px 10px;
+    font-size: 2.3em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  }
+
+  main {
+    max-width: 950px;
+    margin: 40px auto;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 18px;
+    padding: 35px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    backdrop-filter: blur(5px);
+  }
+
+  h2 {
+    font-family: "Montserrat", sans-serif;
+    color: #4527a0;
+    border-left: 6px solid #512da8;
+    padding-left: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .rumus {
+    background: linear-gradient(to right, #ede7f6, #e8eaf6);
+    padding: 15px;
+    border-radius: 10px;
+    font-family: "Courier New", monospace;
+    font-size: 1.1em;
+    text-align: center;
+    color: #1a237e;
+  }
+
+  .calc-box {
+    margin-top: 20px;
+    padding: 18px;
+    background: #f3e5f5;
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  input {
+    width: 80px;
+    margin: 5px;
+    padding: 7px;
+    border-radius: 6px;
+    border: 1px solid #bbb;
+    text-align: center;
+    font-size: 1em;
+  }
+
+  button {
+    background: linear-gradient(90deg, #512da8, #673ab7);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1em;
+    transition: 0.3s;
+    margin-left: 5px;
+  }
+
+  button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(90deg, #5e35b1, #7e57c2);
+  }
+
+  .result {
+    font-weight: bold;
+    color: #2e7d32;
+    margin-top: 10px;
+    font-size: 1.1em;
+  }
+
+  details {
+    margin-top: 15px;
+    background: #fff3e0;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.1);
+  }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #ede7f6;
+    margin-top: 40px;
+    color: #4a148c;
+    font-size: 0.95em;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+  }
+
+  hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(to right, #673ab7, #ba68c8);
+    margin: 30px 0;
+  }
+</style>
+
+</head>
+
+<body>
+  <header>📘 Permutasi dan Kombinasi</header>
+
+  <main>
+    <h2>1️⃣ Pengertian Permutasi</h2>
+    <p>
+      <strong>Permutasi</strong> adalah susunan atau pengaturan objek yang <em>memperhatikan urutan</em>.
+      Jika terdapat <em>n</em> objek dan diambil sebanyak <em>r</em> secara berurutan, maka rumusnya:
+    </p>
+
+    <div class="rumus">
+      nP<sub>r</sub> = <i>n!</i> / (<i>n</i> − <i>r</i>)!
+    </div>
+
+    <p>
+      Contoh: Terdapat 3 bola berbeda warna (merah, biru, putih).  
+      Berapa banyak cara menyusun bola ke dalam 3 kotak?
+    </p>
+    <p><strong>Jawab:</strong> 3! = 3 × 2 × 1 = <b>6 cara</b></p>
+
+    <div class="calc-box">
+      <h3>🔢 Hitung Permutasi</h3>
+      <label>n:</label>
+      <input type="number" id="nPerm" min="0">
+      <label>r:</label>
+      <input type="number" id="rPerm" min="0">
+      <button onclick="hitungPermutasi()">Hitung nP<sub>r</sub></button>
+      <div class="result" id="hasilPerm"></div>
+    </div>
+
+    <hr>
+
+    <h2>2️⃣ Pengertian Kombinasi</h2>
+    <p>
+      <strong>Kombinasi</strong> adalah cara memilih objek tanpa memperhatikan urutan.
+      Rumusnya:
+    </p>
+
+    <div class="rumus">
+      nC<sub>r</sub> = <i>n!</i> / (<i>r!</i> × (<i>n</i> − <i>r</i>)!)
+    </div>
+
+    <p>
+      Contoh: Dari 3 kotak, kita ingin memilih 2 untuk diisi bola yang sama warna.  
+      Karena urutan tidak diperhatikan, hasil berbeda hanya dihitung sekali.
+    </p>
+
+    <div class="calc-box">
+      <h3>🧮 Hitung Kombinasi</h3>
+      <label>n:</label>
+      <input type="number" id="nComb" min="0">
+      <label>r:</label>
+      <input type="number" id="rComb" min="0">
+      <button onclick="hitungKombinasi()">Hitung nC<sub>r</sub></button>
+      <div class="result" id="hasilComb"></div>
+    </div>
+
+    <hr>
+
+    <h2>🧠 Latihan Soal</h2>
+
+<details>
+  <summary>Soal 1: Tiga buah ujian dilakukan dalam suatu periode 6 hari. Berapa banyak pengaturanjadwal yang dapat dilakukan sehingga tidak ada dua ujian atau lebih yang dilakukan pada hari yang sama?</summary>
+  <p>
+    Ujian pertama: 6 pilihan<br>
+    Ujian kedua: 5 pilihan<br>
+    Ujian ketiga: 4 pilihan<br>
+    Jadi: 6 × 5 × 4 = <strong>120 cara</strong><br>
+    (atau 6P<sub>3</sub> = 120)
+  </p>
+</details>
+
+<details>
+  <summary>Soal 2: Sebuah bioskop mempunyai jajaran kursi yang disusun per baris. Tiap baris terdiri dari 6 tempat kursi. Jika 2 orang akan duduk. Berapa banyak pengaturan tempat duduk yang mungkin pada suatu baris?</summary>
+  <p>
+    n = 6, r = 2 → nP<sub>2</sub> = 6! / 4! = 6 × 5 = <strong>30 cara</strong>
+  </p>
+</details>
+
+<details>
+  <summary>Soal 3: Berapa jumlah kemungkinan membentuk 3 angka dari 5 angka berikut: 1,2,3,4,5, jika :</summary>
+  <p><strong>(a) Tidak boleh ada pengulangan angka</strong><br>
+    Karena tidak ada pengulangan → gunakan permutasi.<br><br>
+    Rumus: nP<sub>r</sub> = n! / (n − r)!<br>
+    n = 5, r = 3<br><br>
+    5P<sub>3</sub> = 5 × 4 × 3 = <strong>60 cara</strong>
+  </p>
+  <hr>
+  <p><strong>(b) Boleh ada pengulangan angka</strong><br>
+    Jika boleh mengulang → setiap posisi punya 5 pilihan.<br><br>
+    Rumus: n<sup>r</sup><br>
+    = 5<sup>3</sup> = 5 × 5 × 5 = <strong>125 cara</strong>
+  </p>
+</details>
+  </main>
+
+  <footer>© 2025 - Materi Permutasi & Kombinasi | UNIVERSITAS TRUNOJOYO MADURA</footer>
+
+  <script>
+    function faktorial(n) {
+      if (n === 0 || n === 1) return 1;
+      let hasil = 1;
+      for (let i = 2; i <= n; i++) hasil *= i;
+      return hasil;
+    }
+
+    function hitungPermutasi() {
+      const n = parseInt(document.getElementById("nPerm").value);
+      const r = parseInt(document.getElementById("rPerm").value);
+      if (isNaN(n) || isNaN(r) || n < r) {
+        document.getElementById("hasilPerm").innerHTML = "⚠️ Masukkan nilai valid dengan n ≥ r.";
+        return;
+      }
+      const hasil = faktorial(n) / faktorial(n - r);
+      document.getElementById("hasilPerm").innerHTML = `Hasil: <b>${n}P<sub>${r}</sub> = ${hasil.toLocaleString()}</b>`;
+    }
+
+    function hitungKombinasi() {
+      const n = parseInt(document.getElementById("nComb").value);
+      const r = parseInt(document.getElementById("rComb").value);
+      if (isNaN(n) || isNaN(r) || n < r) {
+        document.getElementById("hasilComb").innerHTML = "⚠️ Masukkan nilai valid dengan n ≥ r.";
+        return;
+      }
+      const hasil = faktorial(n) / (faktorial(r) * faktorial(n - r));
+      document.getElementById("hasilComb").innerHTML = `Hasil: <b>${n}C<sub>${r}</sub> = ${hasil.toLocaleString()}</b>`;
+    }
+  </script>
+</body>
+</html>
