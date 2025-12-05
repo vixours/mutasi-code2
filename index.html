@@ -31,6 +31,19 @@
     text-transform: uppercase;
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    /* Penambahan properti untuk logo */
+    position: relative; 
+  }
+
+  /* CSS untuk logo di header */
+  .header-logo {
+    position: absolute;
+    right: 20px; /* Jarak dari kanan */
+    top: 50%; /* Posisikan vertikal di tengah */
+    transform: translateY(-50%); /* Geser ke atas 50% dari tinggi logo */
+    height: 60px; /* Sesuaikan ukuran logo */
+    width: auto;
+    background-color: transparent;
   }
 
   main {
@@ -139,7 +152,10 @@
 </head>
 
 <body>
-  <header>📘 Permutasi dan Kombinasi</header>
+  <header>
+    📘 Permutasi dan Kombinasi
+    <img src="tif1.png" class="header-logo">
+  </header>
 
   <main>
     <h2>1️⃣ Pengertian Permutasi</h2>
